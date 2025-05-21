@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base target="_self">
+    <title>Unlock Your Genius | Digital Courses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        neonBlue: '#00f0ff',
+                        neonPink: '#ff00f0',
+                        neonGreen: '#00ff7b',
+                        darkBg: '#0f0f15',
+                        darkerBg: '#08080c',
+                    },
+                    boxShadow: {
+                        'neon-blue': '0 0 10px #00f0ff, 0 0 20px #00f0ff40',
+                        'neon-pink': '0 0 10px #ff00f0, 0 0 20px #ff00f040',
+                        'neon-green': '0 0 10px #00ff7b, 0 0 20px #00ff7b40',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0f15;
+            color: #e2e2e2;
+        }
+        .neon-text-blue {
+            text-shadow: 0 0 5px #00f0ff, 0 0 15px #00f0ff;
+        }
+        .neon-text-pink {
+            text-shadow: 0 0 5px #ff00f0, 0 0 15px #ff00f0;
+        }
+        .neon-text-green {
+            text-shadow: 0 0 5px #00ff7b, 0 0 15px #00ff7b;
+        }
+        .glow-hover:hover {
+            filter: drop-shadow(0 0 8px currentColor);
+            transition: all 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        .testimonial-card {
+            background: linear-gradient(145deg, #1a1a24, #0f0f15);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-darkBg/90 backdrop-blur-md border-b border-gray-800">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <a href="#" class="text-2xl font-bold neon-text-blue glow-hover" onclick="navigate(event, 'home')">GENIUS<span class="neon-text-pink">ACADEMY</span></a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#courses" class="text-gray-300 hover:text-neonBlue px-3 py-2 rounded-md text-sm font-medium glow-hover" onclick="navigate(event, 'courses')">Courses</a>
+                        <a href="#testimonials" class="text-gray-300 hover:text-neonPink px-3 py-2 rounded-md text-sm font-medium glow-hover" onclick="navigate(event, 'testimonials')">Testimonials</a>
+                        <a href="#about" class="text-gray-300 hover:text-neonGreen px-3 py-2 rounded-md text-sm font-medium glow-hover" onclick="navigate(event, 'about')">About</a>
+                        <a href="#contact" class="text-gray-300 hover:text-neonBlue px-3 py-2 rounded-md text-sm font-medium glow-hover" onclick="navigate(event, 'contact')">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <button class="px-4 py-2 bg-gradient-to-r from-neonBlue to-neonPink text-darkBg font-bold rounded-md hover:shadow-neon-pink transition-all duration-300">
+                        Sign In
+                    </button>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-darkerBg">
+                <a href="#courses" class="text-gray-300 hover:text-neonBlue block px-3 py-2 rounded-md text-base font-medium glow-hover" onclick="navigate(event, 'courses')">Courses</a>
+                <a href="#testimonials" class="text-gray-300 hover:text-neonPink block px-3 py-2 rounded-md text-base font-medium glow-hover" onclick="navigate(event, 'testimonials')">Testimonials</a>
+                <a href="#about" class="text-gray-300 hover:text-neonGreen block px-3 py-2 rounded-md text-base font-medium glow-hover" onclick="navigate(event, 'about')">About</a>
+                <a href="#contact" class="text-gray-300 hover:text-neonBlue block px-3 py-2 rounded-md text-base font-medium glow-hover" onclick="navigate(event, 'contact')">Contact</a>
+                <button class="w-full mt-2 px-4 py-2 bg-gradient-to-r from-neonBlue to-neonPink text-darkBg font-bold rounded-md hover:shadow-neon-pink transition-all duration-300">
+                    Sign In
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="home" class="relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+                <div class="relative z-10 text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        <span class="neon-text-blue">Unlock Your</span> 
+                        <span class="neon-text-pink">Genius</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 neon-text-green">Study Smarter, Grow Faster</p>
+                    <div class="flex justify-center space-x-4">
+                        <button class="px-6 py-3 bg-gradient-to-r from-neonBlue to-neonPink text-darkBg font-bold rounded-md hover:shadow-neon-pink transition-all duration-300">
+                            Explore Courses
+                        </button>
+                        <button class="px-6 py-3 border-2 border-neonGreen text-neonGreen font-bold rounded-md hover:bg-neonGreen/10 hover:shadow-neon-green transition-all duration-300">
+                            Free Trial
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute top-0 left-0 w-full h-full opacity-20">
+                    <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-neonBlue blur-3xl opacity-40"></div>
+                    <div class="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-neonPink blur-3xl opacity-40"></div>
+                    <div class="absolute bottom-1/4 right-1/3 w-64 h-64 rounded-full bg-neonGreen blur-3xl opacity-40"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Courses -->
+        <section id="courses" class="py-16 bg-darkerBg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4 neon-text-blue">Featured Courses</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Master new skills with our cutting-edge digital courses designed for rapid learning</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Course cards will be generated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4 neon-text-pink">Student Success Stories</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Don't just take our word for it - hear from our students</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial cards will be generated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-darkerBg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6 neon-text-green">About Genius Academy</h2>
+                        <p class="text-gray-300 mb-4">We're revolutionizing digital education with our neuroscience-backed learning techniques and cutting-edge course delivery.</p>
+                        <p class="text-gray-300 mb-6">Our mission is to make high-quality education accessible to everyone, helping you unlock your full potential in record time.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-6 h-6 rounded-full bg-neonBlue flex items-center justify-center">
+                                        <i class="fas fa-check text-darkBg text-xs"></i>
+                                    </div>
+                                </div>
+                                <p class="ml-3 text-gray-300">Expert-created content with real-world applications</p>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-6 h-6 rounded-full bg-neonPink flex items-center justify-center">
+                                        <i class="fas fa-check text-darkBg text-xs"></i>
+                                    </div>
+                                </div>
+                                <p class="ml-3 text-gray-300">Interactive learning with hands-on projects</p>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-6 h-6 rounded-full bg-neonGreen flex items-center justify-center">
+                                        <i class="fas fa-check text-darkBg text-xs"></i>
+                                    </div>
+                                </div>
+                                <p class="ml-3 text-gray-300">Community support and mentorship</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="relative aspect-w-16 aspect-h-9 rounded-xl overflow-hidden border-2 border-neonBlue/30">
+                            <div class="absolute inset-0 bg-gradient-to-br from-neonBlue/10 to-neonPink/10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fas fa-play-circle text-6xl text-neonPink glow-hover"></i>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-neonPink blur-2xl opacity-20"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4 neon-text-blue">Get In Touch</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Have questions? We're here to help you on your learning journey</p>
+                </div>
+                
+                <div class="max-w-3xl mx-auto bg-darkerBg rounded-xl p-8 shadow-lg border border-gray-800">
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 bg-darkBg border border-gray-700 rounded-md focus:border-neonBlue focus:ring-neonBlue text-white placeholder-gray-500" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 bg-darkBg border border-gray-700 rounded-md focus:border-neonPink focus:ring-neonPink text-white placeholder-gray-500" placeholder="your@email.com">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="subject" class="block text-sm font-medium text-gray-300 mb-1">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 bg-darkBg border border-gray-700 rounded-md focus:border-neonGreen focus:ring-neonGreen text-white placeholder-gray-500" placeholder="What's this about?">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 bg-darkBg border border-gray-700 rounded-md focus:border-neonBlue focus:ring-neonBlue text-white placeholder-gray-500" placeholder="Your message here..."></textarea>
+                            </div>
+                            <div class="md:col-span-2">
+                                <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-neonBlue to-neonPink text-darkBg font-bold rounded-md hover:shadow-neon-pink transition-all duration-300">
+                                    Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darkerBg border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <a href="#" class="text-2xl font-bold neon-text-blue glow-hover" onclick="navigate(event, 'home')">GENIUS<span class="neon-text-pink">ACADEMY</span></a>
+                    <p class="mt-4 text-gray-400">Unlock your potential with our cutting-edge digital courses designed for rapid skill acquisition and mastery.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-neonBlue text-xl glow-hover"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-neonPink text-xl glow-hover"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-neonGreen text-xl glow-hover"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-neonBlue text-xl glow-hover"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4 neon-text-pink">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#courses" class="text-gray-400 hover:text-neonBlue glow-hover" onclick="navigate(event, 'courses')">Courses</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-neonPink glow-hover" onclick="navigate(event, 'testimonials')">Testimonials</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-neonGreen glow-hover" onclick="navigate(event, 'about')">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-neonBlue glow-hover" onclick="navigate(event, 'contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4 neon-text-green">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-neonBlue glow-hover">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-neonPink glow-hover">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-neonGreen glow-hover">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-neonBlue glow-hover">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">© 2023 Genius Academy. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <button id="theme-toggle" class="text-gray-400 hover:text-neonBlue focus:outline-none">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data for courses
+        const courses = [
+            {
+                id: 1,
+                title: "AI Fundamentals",
+                description: "Master the basics of artificial intelligence and machine learning concepts",
+                price: "₹199",
+                thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                category: "Technology",
+                rating: 4.8,
+                students: 1245,
+                color: "blue"
+            },
+            {
+                id: 2,
+                title: "Digital Marketing Pro",
+                description: "Complete guide to modern digital marketing strategies and tools",
+                price: "₹149",
+                thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                category: "Marketing",
+                rating: 4.6,
+                students: 892,
+                color: "pink"
+            },
+            {
+                id: 3,
+                title: "Web Development Bootcamp",
+                description: "From zero to hero in modern full-stack web development",
+                price: "₹179",
+                thumbnail: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                category: "Development",
+                rating: 4.9,
+                students: 2103,
+                color: "green"
+            },
+            {
+                id: 4,
+                title: "Data Science Essentials",
+                description: "Learn data analysis, visualization, and machine learning with Python",
+                price: "₹159",
+                thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                category: "Data",
+                rating: 4.7,
+                students: 1567,
+                color: "blue"
+            },
+            {
+                id: 5,
+                title: "UX/UI Design Masterclass",
+                description: "Create stunning user interfaces and seamless user experiences",
+                price: "₹129",
+                thumbnail: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                category: "Design",
+                rating: 4.5,
+                students: 743,
+                color: "pink"
+            },
+            {
+                id: 6,
+                title: "Blockchain Basics",
+                description: "Understand blockchain technology and cryptocurrency fundamentals",
+                price: "₹99",
+                thumbnail: "https://images.unsplash.com/photo-1626624340243-6e5aa3e0f5e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+                category: "Technology",
+                rating: 4.3,
+                students: 532,
+                color: "green"
+            }
+        ];
+
+        // Data for testimonials
+        const testimonials = [
+            {
+                name: "Rahul Sharma",
+                role: "Web Developer",
+                avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+                content: "The Web Development Bootcamp completely transformed my career. I went from knowing nothing to landing a junior developer role in just 3 months!",
+                rating: 5
+            },
+            {
+                name: "Priya Patel",
+                role: "Marketing Manager",
+                avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+                content: "The Digital Marketing course gave me practical skills I could apply immediately at work. Our campaign performance improved by 200% after implementing what I learned.",
+                rating: 5
+            },
+            {
+                name: "Amit Singh",
+                role: "Data Analyst",
+                avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+                content: "As someone with no prior experience, the Data Science Essentials course made complex concepts easy to understand. The hands-on projects were incredibly valuable.",
+                rating: 4
+            }
+        ];
+
+        // Generate course cards
+        const coursesContainer = document.querySelector('#courses .grid');
+        courses.forEach(course => {
+            const card = document.createElement('div');
+            card.className = `course-card bg-darkBg rounded-xl overflow-hidden border border-gray-800 transition-all duration-300 hover:border-neon${course.color.charAt(0).toUpperCase() + course.color.slice(1)}`;
+            
+            card.innerHTML = `
+                <div class="relative h-48 overflow-hidden">
+                    <img src="${course.thumbnail}" alt="${course.title}" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute top-4 right-4 bg-black/70 px-2 py-1 rounded-md text-xs font-semibold text-white">
+                        ${course.category}
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-white">${course.title}</h3>
+                        <span class="text-neon${course.color.charAt(0).toUpperCase() + course.color.slice(1)} font-bold">${course.price}</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">${course.description}</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="flex items-center text-yellow-400 mr-2">
+                                ${'<i class="fas fa-star"></i>'.repeat(Math.floor(course.rating))}
+                                ${course.rating % 1 >= 0.5 ? '<i class="fas fa-star-half-alt"></i>' : ''}
+                                ${'<i class="far fa-star"></i>'.repeat(5 - Math.ceil(course.rating))}
+                            </div>
+                            <span class="text-xs text-gray-500">(${course.students})</span>
+                        </div>
+                        <button class="px-4 py-2 bg-gradient-to-r from-neon${course.color.charAt(0).toUpperCase() + course.color.slice(1)} to-neon${course.color === 'blue' ? 'Pink' : course.color === 'pink' ? 'Green' : 'Blue'} text-darkBg font-bold rounded-md hover:shadow-neon-${course.color} transition-all duration-300 text-sm">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            coursesContainer.appendChild(card);
+        });
+
+        // Generate testimonial cards
+        const testimonialsContainer = document.querySelector('#testimonials .grid');
+        testimonials.forEach(testimonial => {
+            const card = document.createElement('div');
+            card.className = 'testimonial-card rounded-xl p-6 shadow-lg border border-gray-800';
+            
+            card.innerHTML = `
+                <div class="flex items-center mb-4">
+                    <img src="${testimonial.avatar}" alt="${testimonial.name}" class="w-12 h-12 rounded-full object-cover mr-4 border-2 border-neonPink">
+                    <div>
+                        <h4 class="font-bold text-white">${testimonial.name}</h4>
+                        <p class="text-gray-400 text-sm">${testimonial.role}</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 mb-4">"${testimonial.content}"</p>
+                <div class="flex items-center text-yellow-400">
+                    ${'<i class="fas fa-star"></i>'.repeat(testimonial.rating)}
+                    ${'<i class="far fa-star"></i>'.repeat(5 - testimonial.rating)}
+                </div>
+            `;
+            
+            testimonialsContainer.appendChild(card);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            
+            if (!isExpanded) {
+                mobileMenuButton.innerHTML = '<span class="sr-only">Close main menu</span><i class="fas fa-times text-xl"></i>';
+            } else {
+                mobileMenuButton.innerHTML = '<span class="sr-only">Open main menu</span><i class="fas fa-bars text-xl"></i>';
+            }
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-sun text-xl"></i>';
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-moon text-xl"></i>';
+            }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'light') {
+            html.classList.remove('dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun text-xl"></i>';
+        }
+
+        // Navigation function
+        function navigate(event, section) {
+            event.preventDefault();
+            document.getElementById(section).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Handle all anchor tags with JavaScript
+        document.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
